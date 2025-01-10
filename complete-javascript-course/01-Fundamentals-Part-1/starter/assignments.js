@@ -81,11 +81,18 @@ if (hasLessPeopleThanAverage) {
   );
 }
 console.log(hasLessPeopleThanAverage);
-// let averagePopulation = 6;
-// let smallerPopulationThanAverageCountry = population < averagePopulation;
-// console.log(smallerPopulationThanAverageCountry);
 
-// (the 22 is the average of 33 minus the country's population).
-// After checking the result,
-// change the population temporarily to 13 and then to 130.
-// See the different results, and set the population back to original.
+// Let's say Sarah is looking for a new country to live in.
+// She wants to live in a country that speaks English, has less than 50 million people and is not an island.
+// If yours is the right country, log a strings like this 'You should live in Portugal :)'. If not, log 'Portugal does not meet your criteria :('.
+// Probably your country does not meet all the criteria. So go back and temporarily change some variables in order to make the condition true (unless you live in Canada :D).
+
+// Ireland:
+const isAnglophone = true;
+const hasLessThanFiftyMillion = true;
+
+if (isAnglophone && hasLessThanFiftyMillion && !isIsland) {
+  console.log(`You should live in ${country} :)`);
+} else {
+  console.log(`${country} does not meet your criteria :(`);
+}
