@@ -8,7 +8,12 @@ const generateNumber = () => Math.trunc(Math.random() * 20) + 1;
 let secretNumber = generateNumber();
 const guessInput = document.querySelector('.guess');
 const replayBtn = document.querySelector('button.btn.again');
-const messageParagraph = document.querySelector('.message');
+
+// const messageParagraph = document.querySelector('.message');
+const displayMessage = message => {
+  document.querySelector('.message').textContent = message;
+};
+
 const hiddenNumber = document.querySelector('.number');
 const bodyElement = document.querySelector('body');
 let guess = -1;
@@ -19,7 +24,7 @@ let score = 20;
 replayBtn.addEventListener('click', () => {
   guessInput.value = '';
   hiddenNumber.textContent = '?';
-  messageParagraph.textContent = 'Start guessing...';
+  displayMessage('Start guessing...');
   hiddenNumber.style.width = '15rem';
   score = 20;
   scoreElemSpan.textContent = score;
@@ -35,12 +40,12 @@ document.querySelector('.check').addEventListener('click', () => {
 
   //   When no input
   if (!guess) {
-    messageParagraph.textContent = 'No guess submitted! Enter a number.';
+    displayMessage('No guess submitted! Enter a number.');
 
     //   When player wins
   } else if (guess === secretNumber) {
     hiddenNumber.textContent = secretNumber;
-    messageParagraph.textContent = 'Correct Number - you win!';
+    displayMessage('Correct Number - you win!');
     // score += 10;
     scoreElemSpan.textContent = score;
 
@@ -54,17 +59,15 @@ document.querySelector('.check').addEventListener('click', () => {
     bodyElement.style.backgroundColor = '#60b347';
     // backgroundColor style attribute on body element
     hiddenNumber.style.width = '30rem';
-  } else if (guess > secretNumber) {
-    messageParagraph.textContent = 'Guess is too High';
-    score--;
-    scoreElemSpan.textContent = score;
-  } else if (guess < secretNumber) {
-    messageParagraph.textContent = 'Guess is too Low';
+  } else if (guess !== secretNumber) {
+    displayMessage(
+      guess > secretNumber ? 'Guess is too High' : 'Guess is too Low'
+    );
     score--;
     scoreElemSpan.textContent = score;
   }
 
   if (score <= 0) {
-    messageParagraph.textContent = 'You lost the game.';
+    displayMessage('You lost the game.');
   }
 });
