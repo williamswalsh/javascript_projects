@@ -33,4 +33,47 @@ button.addEventListener('click', function () {
 });
 ////////////////////////////////////////////////////////////////
 
+
+// When selecting an element with querySelector and there are multiple matching elements -> only the first element is selected!!! NB
+// const openModalBtns = document.querySelector('.show-modal');
+
+// Multiple element selection: querySelectorAll
+// Returns NodeList
+const openModalBtns = document.querySelectorAll('.show-modal');
+
+
+// Can refer to class list of element
+// can remove/add/contains on classList
+const openModal = () => {
+  overlay.classList.remove('hidden');
+  modal.classList.remove('hidden');
+};
+
+const closeModal = () => {
+  overlay.classList.add('hidden');
+  modal.classList.add('hidden');
+};
+
+closeModalBtn.addEventListener('click', closeModal);
+openModalBtn.addEventListener('click', openModal);
+
+// keydown - when key is hit
+// keypress - when key is held - multiple presses -> multiple events
+// keyup - when key is released
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+    modal.classList.add('hidden');
+  }
+});
+
+// Can also modify classes by:
+// element.style.display = 'none';
+// OR
+// element.classList.remove('hidden');
+
+// Create a css class like:
+// hidden {
+//     display: none
+// }
+
 ```

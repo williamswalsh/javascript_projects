@@ -34,3 +34,18 @@ document.addEventListener('keydown', event => {
     overlay.classList.add('hidden');
   }
 });
+
+// JS
+// element.style.display = 'none';
+// OR
+// element.classList.remove('hidden');
+// element.classList.add('hidden');
+
+// if (element.classList.contains('hidden') {}
+
+//
+
+// Create a css class like:
+// hidden {
+//     display: none
+// }
